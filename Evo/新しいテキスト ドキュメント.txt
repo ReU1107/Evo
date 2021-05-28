@@ -1,0 +1,12 @@
+class Mesh
+{
+Skin* m_skin;
+Skeleton* m_skeleton;// 動的な場合のみ
+
+}
+
+// あくまでも表示物
+class Skin
+{
+// 頂点座標など
+}

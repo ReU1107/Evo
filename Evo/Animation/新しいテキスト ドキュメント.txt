@@ -1,0 +1,19 @@
+アニメーション再生の際に
+補間関数をいじれるようにしたい
+
+enum class InterpolationType
+{
+ Linnear,
+ EaseinEaseout,
+
+};
+
+struct InterpolationDesk
+{
+union
+{
+
+}data;
+InterpolationType type;
+};
+

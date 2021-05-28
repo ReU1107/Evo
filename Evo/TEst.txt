@@ -1,0 +1,80 @@
+// UEのクラス(多分)
+
+class Actor
+{
+private:
+	// コンポーネント配列よりシーンコンポーネントを一つ持っている感じかな？
+	Components m_cs;	// コンポーネント配列
+	EventGraph* m_g;
+}
+
+class Transform
+{
+private:
+	// ここで親子関係を作成している
+	Vector3 t;
+	Vector3 s;
+	Vector4 q;
+}
+
+
+class Component
+{
+private:
+	Transform* m_t;	// 必ず持つもの
+	Events m_es;	// イベント配列
+}
+
+// ブループリント
+class EventGraph
+{
+private:
+	Functions m_fs;	// 関数配列
+
+}
+
+// 基底クラス
+class Function
+{
+public:
+	virtual void OnStart(Actor* actor) = 0;
+	virtual void OnUpdate() = 0;
+}
+
+// ブループリントのコンパイルで
+class TestFunc : public Function
+{
+private:
+	// このクラスで使用する全てのコンポーネントを持つ
+public:
+	// Start関数で全ての変数に値を入れる
+	// Update関数で自由にしてください
+}
+
+// UEでは可変長配列　いわゆるstd::vector
+template<class T>
+class Array
+{
+
+}
+// 配列は普通に[]にする
+
+数値型を文字列型に変換できるようにしておく
+
+ガベージコレクションを実装する
+参照カウント方式、所有関係追跡方式
+
+基本型や構造体、列挙体はポインタで持たない。（必ず）
+
+オブジェクト生成は必ずNewObject<>();にする
+又は、CreateObject<>();
+
+低レベルはComPtrで持つようにする
+
+
+NewObject<>(Owner*owner)がコンストラクタで使用できない理由
+shared_ptrと同じ理由じゃないかな
+コンストラクタの処理の時点ではまだオーナーの実態はないため。
+
+LoadObject<>(owner,Text());
+で読み込む。
